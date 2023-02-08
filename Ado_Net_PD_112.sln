@@ -5,7 +5,11 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_ConnectedMode", "01_ConnectedMode\01_ConnectedMode.csproj", "{87318485-80D1-46C9-ADD4-A2A5767D54C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_ConnectedModeCRUD", "02_ConnectedModeCRUD\02_ConnectedModeCRUD.csproj", "{DB6C9277-35DA-42F4-861B-F50F4FEC163D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_ConnectedModeCRUD", "02_ConnectedModeCRUD\02_ConnectedModeCRUD.csproj", "{DB6C9277-35DA-42F4-861B-F50F4FEC163D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf_client", "wpf_client\wpf_client.csproj", "{6AABBBFE-9C3C-4454-A4BB-617C3BBBFBBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data_access", "data_access\data_access.csproj", "{A7EC5E9D-6854-46E7-AA03-E1D6B1681EAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{DB6C9277-35DA-42F4-861B-F50F4FEC163D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB6C9277-35DA-42F4-861B-F50F4FEC163D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB6C9277-35DA-42F4-861B-F50F4FEC163D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AABBBFE-9C3C-4454-A4BB-617C3BBBFBBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AABBBFE-9C3C-4454-A4BB-617C3BBBFBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AABBBFE-9C3C-4454-A4BB-617C3BBBFBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AABBBFE-9C3C-4454-A4BB-617C3BBBFBBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7EC5E9D-6854-46E7-AA03-E1D6B1681EAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7EC5E9D-6854-46E7-AA03-E1D6B1681EAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7EC5E9D-6854-46E7-AA03-E1D6B1681EAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7EC5E9D-6854-46E7-AA03-E1D6B1681EAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
