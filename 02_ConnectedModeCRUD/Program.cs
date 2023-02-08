@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace _02_ConnectedModeCRUD
 {
@@ -20,7 +22,7 @@ namespace _02_ConnectedModeCRUD
     #endregion
     class SportShopDb
     {
-        //CRUD
+        //CRUD interface
         //[C]reate
         //[R]ead
         //[U]pdate
@@ -39,13 +41,19 @@ namespace _02_ConnectedModeCRUD
         public void Create(Product product)
         {
             string cmdText = $@"INSERT INTO Products
-                               VALUES ('{product.Name}', 
-                                       '{product.Type}', 
-                                        {product.Quantity}, 
-                                        {product.CostPrice}, 
-                                       '{product.Producer}', 
-                                        {product.Price})";
+                               VALUES (@name, 
+                                       @type, 
+                                       @quantity, 
+                                       @costPrice, 
+                                       @producer, 
+                                       @price)";
             SqlCommand command = new SqlCommand(cmdText, connection);
+            command.Parameters.AddWithValue("name",product.Name);
+            command.Parameters.AddWithValue("type", product.Type);
+            command.Parameters.AddWithValue("quantity", product.Quantity);
+            command.Parameters.AddWithValue("costPrice", product.CostPrice);
+            command.Parameters.AddWithValue("producer", product.Producer);
+            command.Parameters.AddWithValue("price", product.Price);
             command.CommandTimeout = 5;           
             command.ExecuteNonQuery();
         }
@@ -54,8 +62,64 @@ namespace _02_ConnectedModeCRUD
             string cmdText = @"select * from Products";
             SqlCommand command = new SqlCommand(cmdText, connection);
             SqlDataReader reader = command.ExecuteReader();
-            List<Product> products = new List<Product>();
+            return this.GetProductsByQuery(reader);
+        }
+        public void Update(Product product)
+        {
+            string cmdText = $@"UPDATE Products
+                               SET Name = @name, 
+                                   TypeProduct = @type, 
+                                   Quantity = @quantity, 
+                                   CostPrice = @costPrice, 
+                                   Producer =@producer, 
+                                   Price = @price
+                                   WHERE Id = {product.Id}";
+            SqlCommand command = new SqlCommand(cmdText, connection);
+            command.Parameters.AddWithValue("name", product.Name);
+            command.Parameters.AddWithValue("type", product.Type);
+            command.Parameters.AddWithValue("quantity", product.Quantity);
+            command.Parameters.AddWithValue("costPrice", product.CostPrice);
+            command.Parameters.AddWithValue("producer", product.Producer);
+            command.Parameters.AddWithValue("price", product.Price);
+            command.CommandTimeout = 5;
+            command.ExecuteNonQuery();
+        }
+        public void Delete(int id)
+        {
+            string cmdText = $@"Delete Products where Id = {id}";
+            SqlCommand command = new SqlCommand(cmdText, connection);
+            command.ExecuteNonQuery();
+        }
+        public Product GetOneById(int id)
+        {
+            string cmdText = $@"select  * from Products WHERE Id = {id}";
+            SqlCommand command = new SqlCommand(cmdText, connection);
+            SqlDataReader reader = command.ExecuteReader();
+       
+            return this.GetProductsByQuery(reader).FirstOrDefault();
+        }
+        public List<Product> GetOneByName(string name)
+        {
            
+            string cmdText = $@"select * from Products WHERE Name = @name";
+            SqlCommand command = new SqlCommand(cmdText, connection);
+            command.Parameters.Add("name",System.Data.SqlDbType.NVarChar).Value = name;
+
+            //SqlParameter sql = new SqlParameter()
+            //{
+            //    ParameterName = "name",
+            //    SqlDbType = System.Data.SqlDbType.NVarChar,
+            //    Value = name
+            //};
+            //command.Parameters.Add(sql);
+
+            SqlDataReader reader = command.ExecuteReader();
+            return this.GetProductsByQuery(reader);
+           
+        }
+        private List<Product> GetProductsByQuery(SqlDataReader reader)
+        {            
+            List<Product> products = new List<Product>();
             while (reader.Read())
             {
                 products.Add(new Product()
@@ -72,46 +136,7 @@ namespace _02_ConnectedModeCRUD
             reader.Close();
             return products;
         }
-        public void Update(Product product)
-        {
-            string cmdText = $@"UPDATE Products
-                               SET Name = '{product.Name}', 
-                                   TypeProduct = '{product.Type}', 
-                                   Quantity = {product.Quantity}, 
-                                   CostPrice = {product.CostPrice}, 
-                                   Producer ='{product.Producer}', 
-                                   Price = {product.Price}
-                                   WHERE Id = {product.Id}";
-            SqlCommand command = new SqlCommand(cmdText, connection);
-            command.CommandTimeout = 5;
-            command.ExecuteNonQuery();
-        }
-        public void Delete(int id)
-        {
-            string cmdText = $@"Delete Products where Id = {id}";
-            SqlCommand command = new SqlCommand(cmdText, connection);
-            command.ExecuteNonQuery();
-        }
-        public Product GetOneById(int id)
-        {
-            string cmdText = $@"select * from Products WHERE Id = {id}";
-            SqlCommand command = new SqlCommand(cmdText, connection);
-            SqlDataReader reader = command.ExecuteReader();
-            Product product = new Product();
 
-            while (reader.Read())
-            {
-                product.Id = (int)reader[0];
-                product.Name = (string)reader[1];
-                product.Type = (string)reader[2];
-                product.Quantity = (int)reader[3];
-                product.CostPrice = (int)reader[4];
-                product.Producer = (string)reader[5];
-                product.Price = (int)reader[6];              
-            }
-            reader.Close();
-            return product;
-        }
 
     }
     internal class Program
@@ -125,28 +150,40 @@ namespace _02_ConnectedModeCRUD
             Console.OutputEncoding = Encoding.UTF8;
             Product product = new Product()
             {
-                Name = "Shoes",
-                Type = "Football equipment",
-                Quantity = 15,
-                CostPrice = 2800,
-                Producer = "Italy",
-                Price = 2000
+                Name = "Football T-Shirt",
+                Type = "Sport Clothes",
+                Quantity = 12,
+                CostPrice = 600,
+                Producer = "Turkey",
+                Price = 400
             };
             //db.Create(product);
             //var p = db.GelAll();
-            //foreach (var item in p)
-            //{
-            //    Console.WriteLine(item.Id + " " + item.Name);
-            //}
+            Console.WriteLine("Enter name of product to search:");
+            string name = Console.ReadLine();
 
-           var p = db.GetOneById(6);
-           Console.WriteLine(p.Id + " " + p.Name);
-            p.Price = 4000;
-            p.CostPrice = 20000;
-            p.Quantity = 73;
+            List<Product> products = db.GetOneByName(name);
+            foreach (var item in products)
+            {
+                Console.WriteLine(item.Id + " " + item.Name+ " " +
+                    item.CostPrice + " " + item.Producer);
+            }
+            
+
+            var p = db.GetOneById(29);
+            Console.WriteLine(p.Id + " " + p.Name);
+             p.Price = 800;
+             p.CostPrice = 1000;
+             p.Quantity = 100;
 
             db.Update(p);
-          
+
+            var p1 = db.GelAll();
+            foreach (var item in p1)
+            {
+                Console.WriteLine(item.Id + " " + item.Name + " " +
+                    item.CostPrice + " " + item.Producer);
+            }
         }
     }
 }
