@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_discconnected_mode", "05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_linq_to_sql", "06_linq_to_sql\06_linq_to_sql.csproj", "{19B0368A-FB99-4545-951C-924F767D374E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_EF_example", "07_EF_example\07_EF_example.csproj", "{C7CC74B6-1E64-405D-8AB8-33866610EE01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{19B0368A-FB99-4545-951C-924F767D374E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19B0368A-FB99-4545-951C-924F767D374E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19B0368A-FB99-4545-951C-924F767D374E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7CC74B6-1E64-405D-8AB8-33866610EE01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CC74B6-1E64-405D-8AB8-33866610EE01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CC74B6-1E64-405D-8AB8-33866610EE01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CC74B6-1E64-405D-8AB8-33866610EE01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
