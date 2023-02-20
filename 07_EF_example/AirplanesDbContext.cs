@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using _07_EF_example.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -30,7 +28,7 @@ namespace _07_EF_example
             base.OnConfiguring(optionsBuilder);
 
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-3HG9UVT\SQLEXPRESS;
-                                        Initial Catalog = SuperAirplaneDb;
+                                        Initial Catalog = SuperAirplaneDbWithMigration;
                                         Integrated Security=True;Connect Timeout=30;Encrypt=False;
                                         TrustServerCertificate=False;
                                         ApplicationIntent=ReadWrite;
@@ -41,7 +39,7 @@ namespace _07_EF_example
         {
             base.OnModelCreating(modelBuilder);
 
-            //Initializer
+            //Initializer - Seeder
             modelBuilder.Entity<Airplane>().HasData(new Airplane[]
             {
                 new Airplane()
@@ -85,46 +83,5 @@ namespace _07_EF_example
 
            
         }
-    }
-    //Entities
-    [Table("Passengers")]
-    class Client
-    {
-        //Primary Key naming : Id/id/ID / EntityName + Id
-        public int Id { get; set; }
-        [Required]//not null
-        [MaxLength(100)]//nvarchar(100)
-        [Column("FirstName")]
-        public string Name { get; set; }
-        [Required, MaxLength(100)]
-        public string Email { get; set; }
-        public DateTime? Birthday { get; set; }
-        public ICollection<Flight> Flights { get; set; }
-    }
-    class Flight
-    {
-        [Key]//set primary key
-        public int Number{ get; set; }
-        public DateTime ArrivalTime { get; set; }
-        public DateTime DepartureTime { get; set; }
-        [Required, MaxLength(100)]
-        public string ArrivalCity { get; set; }
-        [Required, MaxLength(100)]
-        public string DepartureCity { get; set; }
-        /////Relationship type : one to many
-        ///Foreign key namig : RelatingEntityName + RelatingEntityPrimaryKeyName
-        public int AirplaneId { get; set; }
-        public Airplane Airplane { get; set; }
-        public ICollection<Client> Clients { get; set; }
-
-    }
-    class Airplane
-    {
-        public int Id { get; set; }
-        [Required, MaxLength(100)]
-        public string Model { get; set; }
-        public int MaxPassangers { get; set; }
-        public ICollection<Flight> Flights { get; set; }
-
     }
 }
