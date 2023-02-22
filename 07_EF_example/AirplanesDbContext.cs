@@ -28,7 +28,7 @@ namespace _07_EF_example
             base.OnConfiguring(optionsBuilder);
 
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-3HG9UVT\SQLEXPRESS;
-                                        Initial Catalog = SuperAirplaneDbWithMigration111;
+                                        Initial Catalog = SuperAirplaneDbWithMigration;
                                         Integrated Security=True;Connect Timeout=30;Encrypt=False;
                                         TrustServerCertificate=False;
                                         ApplicationIntent=ReadWrite;

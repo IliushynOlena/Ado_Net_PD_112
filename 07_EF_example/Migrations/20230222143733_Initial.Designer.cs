@@ -10,8 +10,8 @@ using _07_EF_example;
 namespace _07_EF_example.Migrations
 {
     [DbContext(typeof(AirplanesDbContext))]
-    [Migration("20230220141745_AddRating")]
-    partial class AddRating
+    [Migration("20230222143733_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,20 +54,6 @@ namespace _07_EF_example.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Airplanes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            MaxPassangers = 1200,
-                            Model = "Antonov 125"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            MaxPassangers = 1300,
-                            Model = "Boeing 747"
-                        });
                 });
 
             modelBuilder.Entity("_07_EF_example.Entities.Client", b =>
@@ -130,26 +116,6 @@ namespace _07_EF_example.Migrations
                     b.HasIndex("AirplaneId");
 
                     b.ToTable("Flights");
-
-                    b.HasData(
-                        new
-                        {
-                            Number = 1,
-                            AirplaneId = 1,
-                            ArrivalCity = "Lviv",
-                            ArrivalTime = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartureCity = "Kyiv",
-                            DepartureTime = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Number = 2,
-                            AirplaneId = 2,
-                            ArrivalCity = "Lviv",
-                            ArrivalTime = new DateTime(2023, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartureCity = "Warsaw",
-                            DepartureTime = new DateTime(2023, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("ClientFlight", b =>
