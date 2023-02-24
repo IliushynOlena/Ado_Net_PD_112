@@ -14,7 +14,7 @@ namespace _07_EF_example.Helpers
         public static void SeedAirplanes(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Airplane>().HasData(new Airplane[]
-         {
+            {
                 new Airplane()
                 {
                     Id = 1,
@@ -27,7 +27,7 @@ namespace _07_EF_example.Helpers
                     Model = "Boeing 747",
                     MaxPassangers = 1300
                 }
-         });
+            });
 
         }
         public static void SeedFligths(this ModelBuilder modelBuilder)

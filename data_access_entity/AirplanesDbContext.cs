@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _07_EF_example
 {
-    internal class AirplanesDbContext : DbContext
+    public class AirplanesDbContext : DbContext
     {
         public AirplanesDbContext()
         {

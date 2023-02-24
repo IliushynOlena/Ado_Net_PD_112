@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace _07_EF_example.Entities
 {
-    class Flight
+    public class Flight
     {
         public int Number { get; set; }
         public DateTime ArrivalTime { get; set; }
@@ -15,8 +15,8 @@ namespace _07_EF_example.Entities
 
         public int AirplaneId { get; set; }
         //Navigation Properties
-        public Airplane Airplane { get; set; }
-        public ICollection<Client> Clients { get; set; }
+        public Airplane Airplane { get; set; }//Reference
+        public ICollection<Client> Clients { get; set; }//Collection
 
     }
 }

@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_discconnected_mode", "05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_linq_to_sql", "06_linq_to_sql\06_linq_to_sql.csproj", "{19B0368A-FB99-4545-951C-924F767D374E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_EF_example", "07_EF_example\07_EF_example.csproj", "{C7CC74B6-1E64-405D-8AB8-33866610EE01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_EF_example", "07_EF_example\07_EF_example.csproj", "{C7CC74B6-1E64-405D-8AB8-33866610EE01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data_access_entity", "data_access_entity\data_access_entity.csproj", "{B8A17369-8F83-4543-B09D-8D94792FA447}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_AirportProject", "08_AirportProject\08_AirportProject.csproj", "{AE71E016-5E01-4B9A-BB8E-2CCF26BB4309}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{C7CC74B6-1E64-405D-8AB8-33866610EE01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7CC74B6-1E64-405D-8AB8-33866610EE01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7CC74B6-1E64-405D-8AB8-33866610EE01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A17369-8F83-4543-B09D-8D94792FA447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A17369-8F83-4543-B09D-8D94792FA447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A17369-8F83-4543-B09D-8D94792FA447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A17369-8F83-4543-B09D-8D94792FA447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE71E016-5E01-4B9A-BB8E-2CCF26BB4309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE71E016-5E01-4B9A-BB8E-2CCF26BB4309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE71E016-5E01-4B9A-BB8E-2CCF26BB4309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE71E016-5E01-4B9A-BB8E-2CCF26BB4309}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
