@@ -29,7 +29,7 @@ namespace _07_EF_example
             base.OnConfiguring(optionsBuilder);
 
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-3HG9UVT\SQLEXPRESS;
-                                        Initial Catalog = SuperAirplaneDbWithMigration;
+                                        Initial Catalog = SuperAirplaneDbWithMigration2;
                                         Integrated Security=True;Connect Timeout=2;Encrypt=False;
                                         TrustServerCertificate=False;
                                         ApplicationIntent=ReadWrite;
@@ -58,8 +58,10 @@ namespace _07_EF_example
             modelBuilder.Entity<Client>().Property(c => c.Email).
                 HasMaxLength(100).
                 IsRequired();
+            modelBuilder.Entity<Client>().HasIndex(c => c.Email).IsUnique();
 
-            modelBuilder.Entity<Flight>().HasKey(f => f.Number);//set primary key
+
+           modelBuilder.Entity<Flight>().HasKey(f => f.Number);//set primary key
             modelBuilder.Entity<Flight>().Property(f => f.DepartureCity).
                 HasMaxLength(100).
                 IsRequired();
