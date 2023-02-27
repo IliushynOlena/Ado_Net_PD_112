@@ -1,4 +1,5 @@
 ﻿using _07_EF_example.Entities;
+using data_access_entity.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -78,6 +79,64 @@ namespace _07_EF_example.Helpers
                 }
             });
          
+        }
+        public static void SeedCredentials(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Credentials>().HasData(new Credentials[]
+        {
+                new Credentials()
+                {
+                     Id = 1,
+                     Login = "user1",
+                     Password = "123"
+                },
+                new Credentials()
+                {
+                     Id = 2,
+                     Login = "user2",
+                     Password = "321"
+                }
+            });
+
+        }
+        public static void SeedClient(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Client>().HasData(new Client[]
+        {
+                new Client()
+                {
+                     CredentialsId = 1,
+                     Name = "Mukola",
+                     Birthday = new DateTime(2000,2,2),
+                     Email = "mukola@gmail.com"
+                },
+                new Client()
+                {
+                     CredentialsId = 2,
+                     Name = "Olga",
+                     Birthday = new DateTime(2005,2,2),
+                     Email = "olga@gmail.com"
+                }
+            });
+
+        }
+        public static void SeedClientFlight(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ClientFligth>().HasData(new ClientFligth[]
+        {
+                new ClientFligth()
+                {
+                      ClientId = 1,
+                      FlightId = 1
+                    
+                },
+                new ClientFligth()
+                {
+                      ClientId = 2,
+                      FlightId = 2
+                }
+            });
+
         }
     }
 }

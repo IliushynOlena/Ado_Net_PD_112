@@ -1,4 +1,5 @@
 ﻿using _07_EF_example;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,15 @@ namespace _08_AirportProject
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             dataGrid.ItemsSource = context.Airplanes.ToList();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var filterCollec = context.Flights
+              .Include(f => f.Airplane).//Like Join in SQL
+              Include(f => f.ClientFligth).
+              OrderBy(f => f.ArrivalTime);
+            grid.ItemsSource = filterCollec.ToList();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using data_access_entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -16,7 +17,8 @@ namespace _07_EF_example.Entities
         public int AirplaneId { get; set; }
         //Navigation Properties
         public Airplane Airplane { get; set; }//Reference
-        public ICollection<Client> Clients { get; set; }//Collection
+        public ICollection<ClientFligth> ClientFligth { get; set; }//Collection
+        //public ICollection<Client> Clients { get; set; }//Collection
 
     }
 }
